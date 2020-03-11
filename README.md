@@ -11,6 +11,7 @@ Evaluated
 =========
 
 * [Annoy](https://github.com/spotify/annoy)
+* [AnnoyED](https://github.com/jonashering/annoyED)
 * [FLANN](http://www.cs.ubc.ca/research/flann/)
 * [scikit-learn](http://scikit-learn.org/stable/modules/neighbors.html): LSHForest, KDTree, BallTree
 * [PANNS](https://github.com/ryanrhymes/panns)
@@ -31,7 +32,7 @@ Evaluated
 Data sets
 =========
 
-We have a number of precomputed data sets for this. All data sets are pre-split into train/test and come with ground truth data in the form of the top 100 neighbors. We store them in a HDF5 format:
+We have a number of precomputed data sets for this. All data sets are pre-split into train/test and come with ground truth data in the form of the top 100 neighbors. We store them in a HDF5 format. AnnoyED only supports Euclidean and Angular Distance:
 
 | Dataset                                                           | Dimensions | Train size | Test size | Neighbors | Distance  | Download                                                                   |
 | ----------------------------------------------------------------- | ---------: | ---------: | --------: | --------: | --------- | -------------------------------------------------------------------------- |
@@ -47,54 +48,20 @@ We have a number of precomputed data sets for this. All data sets are pre-split 
 | [NYTimes](https://archive.ics.uci.edu/ml/datasets/bag+of+words)   |        256 |    290,000 |    10,000 |       100 | Angular   | [HDF5](http://ann-benchmarks.com/nytimes-256-angular.hdf5) (301MB)         |
 | [SIFT](https://corpus-texmex.irisa.fr/)                           |        128 |  1,000,000 |    10,000 |       100 | Euclidean | [HDF5](http://ann-benchmarks.com/sift-128-euclidean.hdf5) (501MB)          |
 
-Results
-=======
 
-These are all as of 2019-06-10, running all benchmarks on a c5.4xlarge machine on AWS:
-
-glove-100-angular
------------------
-
-![glove-100-angular](https://raw.github.com/erikbern/ann-benchmarks/master/results/glove-100-angular.png)
-
-sift-128-euclidean
-------------------
-
-![glove-100-angular](https://raw.github.com/erikbern/ann-benchmarks/master/results/sift-128-euclidean.png)
-
-fashion-mnist-784-euclidean
----------------------------
-
-![fashion-mnist-784-euclidean](https://raw.github.com/erikbern/ann-benchmarks/master/results/fashion-mnist-784-euclidean.png)
-
-gist-960-euclidean
-------------------
-
-![gist-960-euclidean](https://raw.github.com/erikbern/ann-benchmarks/master/results/gist-960-euclidean.png)
-
-nytimes-256-angular
--------------------
-
-![nytimes-256-angular](https://raw.github.com/erikbern/ann-benchmarks/master/results/nytimes-256-angular.png)
-
-glove-25-angular
-----------------
-
-![glove-25-angular](https://raw.github.com/erikbern/ann-benchmarks/master/results/glove-25-angular.png)
 
 Install
 =======
 
-The only prerequisite is Python (tested with 3.6) and Docker.
+The only prerequisite is Python (tested with 3.6) and Docker (if you want to run other algorithms than annoyED).
 
 1. Clone the repo.
 2. Run `pip install -r requirements.txt`.
-3. Run `python install.py` to build all the libraries inside Docker containers (this can take a while, like 10-30 minutes).
 
 Running
 =======
 
-1. Run `python run.py` (this can take an extremely long time, potentially days)
+1. Run `python run.py --local --dataset DATASET` while the AnnoyED application is running.
 2. Run `python plot.py` or `python create_website.py` to plot results.
 
 You can customize the algorithms and datasets if you want to:
