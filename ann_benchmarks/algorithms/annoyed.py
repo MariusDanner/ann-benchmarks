@@ -45,7 +45,7 @@ class Annoyed(BaseANN):
         self.stop_time = None
         for i, x in enumerate(X):
             datapoint = {
-                'datapointID': f'{i}',
+                'datapointID': i,
                 'vector': x.tolist(),
                 'persist': True,
                 'write': False
@@ -54,7 +54,7 @@ class Annoyed(BaseANN):
 
     def query(self, q, n):
         datapoint = {
-                'datapointID': 'Query Point',
+                'datapointID': -1,
                 'vector': q.tolist(),
                 'persist': False,
                 'write': True,

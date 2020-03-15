@@ -18,12 +18,11 @@ float:
     #       args: [[1, 5, 10, 20, 50, 100]]
           # query-args: [[500]]
   angular:
-    annoyed:
-      docker-tag: not_needed
-      module: ann_benchmarks.algorithms.annoyed
-      constructor: Annoyed
-      base-args: ["@metric"]
-      run-groups:
-        annoyed:
-          args: [[1, 2, 3, 4, 5, 10, 15]]
-    
+      annoyed:
+        docker-tag: not_needed
+        module: ann_benchmarks.algorithms.annoyed
+        constructor: Annoyed
+        base-args: ["@metric"]
+        run-groups:
+          annoyed:
+            args: [[1, 2, 3, 4, 5, 10, 15]]
